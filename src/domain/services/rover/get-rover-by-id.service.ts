@@ -1,13 +1,14 @@
-import { RoverRepository } from '../../../infra/repositories'
+import { RoverRepository, WorldRepository } from '../../../infra/repositories'
 import { MissionRepository } from '../../../infra/repositories'
 import { RoverNotFoundException } from '../../exceptions'
 import { Rover } from '../../models'
 
 export class GetRoverByIdService {
-  private roverRepository: RoverRepository
-  private missionRepository: MissionRepository
-
-  constructor(roverRepository: RoverRepository, missionRepository: MissionRepository) {
+  constructor(
+    private readonly roverRepository: RoverRepository,
+    private readonly worldRepository: WorldRepository,
+    private readonly missionRepository: MissionRepository
+  ) {
     this.roverRepository = roverRepository
     this.missionRepository = missionRepository
   }
@@ -16,6 +17,11 @@ export class GetRoverByIdService {
     const rover = await this.roverRepository.findById(id)
     if (!rover) {
       throw new RoverNotFoundException()
+    }
+
+    const world = await this.worldRepository.findById(rover.worldId)
+    if (world) {
+      rover.setWorld(world)
     }
 
     const missions = await this.missionRepository.findByRoverId(id)

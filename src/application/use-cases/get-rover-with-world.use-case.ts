@@ -9,6 +9,7 @@ export class GetRoverWithWorldUseCase {
   async execute(roverId: string): Promise<Rover> {
     const rover = await this.getRoverByIdService.get(roverId)
     const world = await this.getWorldByIdService.get(rover.worldId)
+
     rover.setWorld(world)
 
     return rover

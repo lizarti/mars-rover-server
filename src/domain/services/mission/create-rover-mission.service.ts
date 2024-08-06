@@ -1,8 +1,10 @@
 import { MissionRepository, RoverRepository } from '../../../infra'
 import { generateUuid } from '../../../utils/uuid.util'
 import { Mission, Rover } from '../../models'
+import { ProcessMissionInstructionsService } from './process-mission-instructions.service'
 
 export class CreateRoverMissionService {
+  private readonly processMissionInstructionsService = new ProcessMissionInstructionsService()
   constructor(
     private readonly missionRepository: MissionRepository,
     private readonly roverRepository: RoverRepository
@@ -15,7 +17,10 @@ export class CreateRoverMissionService {
     mission.positionStart = rover.position.clone()
     mission.orientationStart = rover.orientation.clone()
 
-    const duration = this.processInstructions(rover, missionInstructions)
+    const duration = this.processMissionInstructionsService.processInstructions(
+      rover,
+      missionInstructions
+    )
     mission.durationInSeconds = duration
 
     mission.positionEnd = rover.position.clone()
@@ -27,28 +32,6 @@ export class CreateRoverMissionService {
 
     await this.updateRover(rover)
     return createdMission
-  }
-
-  private processInstructions(rover: Rover, missionInstructions: string): number {
-    const instructions = missionInstructions.split('')
-    instructions.forEach((instruction) => {
-      switch (instruction) {
-        case 'L':
-          rover.turnAnticlockwise()
-          break
-        case 'R':
-          rover.turnClockwise()
-          break
-        case 'M':
-          rover.moveForward()
-          break
-        default:
-          throw new Error('Invalid instruction')
-      }
-    })
-
-    const duration = instructions.length * 500
-    return duration
   }
 
   private async updateRover(rover: Rover): Promise<Rover> {

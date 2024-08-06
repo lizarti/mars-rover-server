@@ -5,7 +5,7 @@ export class AddRoverService {
   constructor(private readonly roverRepository: RoverRepository) {}
 
   async add(world: World, rover: Rover): Promise<Rover> {
-    rover.worldId = world.id
+    rover.setWorld(world)
     const createdRover = await this.roverRepository.create(rover)
     return createdRover
   }

@@ -29,7 +29,7 @@ export class Rover implements CanMoveForward, CanTurn, HasId {
     this.orientation = this.orientation.turnAnticlockwise()
   }
 
-  moveForward(step: number = 1): void {
+  moveForward(step = 1): void {
     const newPosition = this.position.add(this.orientation.multiply(step))
     console.log(
       `[Rover] Moving from (${this.position.x}, ${this.position.y}) to (${newPosition.x}, ${newPosition.y})`
@@ -49,9 +49,10 @@ export class Rover implements CanMoveForward, CanTurn, HasId {
     return this.world
   }
 
-  setWorld(world: World): void {
+  setWorld(world: World): Rover {
     this.world = world
     this.worldId = world.id
+    return this
   }
 
   get cardinalOrientation(): CardinalOrientationEnum {

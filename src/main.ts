@@ -23,7 +23,11 @@ const worldRepository = new WorldKnexRepository('worlds')
 const missionRepository = new MissionKnexRepository('missions')
 
 const addRoverService = new AddRoverService(roverRepository)
-const getRoverByIdService = new GetRoverByIdService(roverRepository, missionRepository)
+const getRoverByIdService = new GetRoverByIdService(
+  roverRepository,
+  worldRepository,
+  missionRepository
+)
 const getWorldbyIdService = new GetWorldByIdService(worldRepository)
 const getRoversFromWorldService = new GetRoversFromWorldService(roverRepository)
 const createWorldService = new CreateWorldService(worldRepository)
