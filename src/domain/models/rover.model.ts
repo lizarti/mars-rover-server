@@ -1,10 +1,16 @@
-import { type CanMoveForward, type CanTurn, type HasId } from '../interfaces'
+import {
+  HasOrientation,
+  HasPosition,
+  type CanMoveForward,
+  type CanTurn,
+  type HasId
+} from '../interfaces'
 import { Vector } from './vector.model'
 import { CardinalOrientationEnum } from '../enums'
 import { World } from './world.model'
 import { Mission } from './mission.model'
 
-export class Rover implements CanMoveForward, CanTurn, HasId {
+export class Rover implements CanMoveForward, CanTurn, HasId, HasOrientation, HasPosition {
   id: string
   worldId: string
   private world: World

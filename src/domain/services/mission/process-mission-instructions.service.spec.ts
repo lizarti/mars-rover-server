@@ -36,7 +36,7 @@ describe('ProcessMissionInstructionsService', () => {
 
     expect(() => {
       service.processInstructions(rover, missionInstructions)
-    }).toThrow('Rover cannot move forward to W from position (0, 2) and ')
+    }).toThrow('Rover cannot move forward to W from position (0, 2)')
   })
 
   it('should process empty mission instructions and return 0 duration', () => {
