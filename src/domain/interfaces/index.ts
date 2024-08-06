@@ -1,0 +1,7 @@
+export * from './can-move-forward.interface'
+export * from './can-turn.interface'
+export * from './has-orientation.interface'
+export * from './has-position.interface'
+export * from './renderer-engine.interface'
+export * from './renderer.interface'
+export * from './has-id.interface'
