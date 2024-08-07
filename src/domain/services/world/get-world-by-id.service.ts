@@ -1,11 +1,12 @@
 import { WorldNotFoundException } from '../../exceptions'
 import { World } from '../../models'
-import { WorldRepository } from '../../repositories'
+import { RoverRepository, WorldRepository } from '../../repositories'
 
 export class GetWorldByIdService {
-  private worldRepository: WorldRepository
 
-  constructor(worldRepository: WorldRepository) {
+  constructor(public readonly worldRepository: WorldRepository,
+    public readonly roverRepository: RoverRepository
+  ) {
     this.worldRepository = worldRepository
   }
 
@@ -14,6 +15,9 @@ export class GetWorldByIdService {
     if (!world) {
       throw new WorldNotFoundException()
     }
+
+    const rovers = await this.roverRepository.findByWorldId(id)
+    world.setRovers(rovers)
 
     return world
   }

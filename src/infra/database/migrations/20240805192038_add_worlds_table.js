@@ -6,8 +6,8 @@ exports.up = function (knex) {
   return knex.schema.createTable('worlds', (table) => {
     table.uuid('id').primary()
     table.string('name').notNullable()
-    table.integer('size_x').notNullable()
-    table.integer('size_y').notNullable()
+    table.integer('width').notNullable()
+    table.integer('height').notNullable()
     table.timestamps(true, true)
   })
 }

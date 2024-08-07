@@ -1,4 +1,3 @@
-import { timeStamp } from 'console'
 import { Response } from 'express'
 
 export class ApiResponse<T> {
@@ -33,6 +32,10 @@ export class OkResponse extends ApiResponse<any> {
 
 export class CreatedResponse extends ApiResponse<any> {
   protected status: number = 201
+}
+
+export class NoContentResponse extends ApiResponse<any> {
+  protected status: number = 204
 }
 
 export class BadRequestResponse extends ApiResponse<any> {

@@ -38,7 +38,7 @@ export class ProcessMissionInstructionsService {
     const { x, y } = rover.position
     const { width, height } = rover.getWorld().size
 
-    if (rover.orientation.y === 1 && y + step > height) {
+    if (rover.orientation.y === 1 && y + step > height - 1) {
       return false
     }
 
@@ -46,7 +46,8 @@ export class ProcessMissionInstructionsService {
       return false
     }
 
-    if (rover.orientation.x === 1 && x + step > width) {
+    if (rover.orientation.x === 1 && x + step > width - 1) {
+      console.log('here')
       return false
     }
 

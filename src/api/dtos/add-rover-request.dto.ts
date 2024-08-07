@@ -10,10 +10,10 @@ export class AddRoverRequestDto {
   landingPositionY!: number
 
   @IsNumber()
-  @IsIn([0, 1])
+  @IsIn([0, -1, 1])
   landingOrientationX!: number
 
   @IsNumber()
-  @IsIn([0, 1])
+  @IsIn([0, -1, 1])
   landingOrientationY!: number
 }

@@ -53,4 +53,8 @@ export class RoverKnexRepository
 
     return RoverEntity.toDomain(res[0])
   }
+
+  deleteRover(id: string): Promise<void> {
+    return this.getTable().where('id', id).del()
+  }
 }

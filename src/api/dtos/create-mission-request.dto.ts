@@ -2,7 +2,6 @@ import {
   IsNotEmpty,
   IsString,
   Validate,
-  ValidationArguments,
   ValidatorConstraintInterface
 } from 'class-validator'
 

@@ -13,8 +13,8 @@ export class WorldKnexRepository
       .insert({
         id: world.id,
         name: generateRandomName(),
-        size_x: world.size.width,
-        size_y: world.size.height
+        width: world.size.width,
+        height: world.size.height
       })
       .returning('*')
 
@@ -28,5 +28,15 @@ export class WorldKnexRepository
     if (roverEntity) {
       return WorldEntity.toDomain(roverEntity)
     }
+  }
+
+  async getAll(): Promise<World[]> {
+    const worlds = await this.getTable().leftJoin('rovers', 'worlds.id', 'rovers.world_id').select('worlds.*').count('rovers.id as rovers_count').groupBy('worlds.id') as WorldEntity[]
+
+    return worlds.map(WorldEntity.toDomain)
+  }
+
+  async delete(worldId: string): Promise<void> {
+    await this.getTable().where('id', worldId).delete()
   }
 }
