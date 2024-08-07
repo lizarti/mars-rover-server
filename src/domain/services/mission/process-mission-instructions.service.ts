@@ -1,3 +1,4 @@
+import { RoverActionEnum } from '../../enums'
 import { InvalidMissionInstructionException, InvalidRoverMovementException } from '../../exceptions'
 import { Rover, Vector } from '../../models'
 
@@ -9,13 +10,13 @@ export class ProcessMissionInstructionsService {
     const instructions = missionInstructions.split('')
     instructions.forEach((instruction) => {
       switch (instruction) {
-        case 'L':
+        case RoverActionEnum.LEFT:
           rover.turnAnticlockwise()
           break
-        case 'R':
+        case RoverActionEnum.RIGHT:
           rover.turnClockwise()
           break
-        case 'M':
+        case RoverActionEnum.MOVE:
           const canMoveForward = this.checkIfCanMoveForward(rover)
           if (!canMoveForward) {
             const exceptionMessage = `Rover cannot move forward to ${rover.cardinalOrientation} from position (${rover.position.x}, ${rover.position.y})`

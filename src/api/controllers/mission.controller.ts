@@ -27,7 +27,7 @@ export class MissionController extends Controller {
   }
 
   initializeRoutes() {
-    this.router.post('/worlds/:worldId/rovers/:roverId/missions', (req, res) =>
+    this.router.post('/api/worlds/:worldId/rovers/:roverId/missions', (req, res) =>
       this.createMission(req, res)
     )
   }

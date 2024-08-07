@@ -56,8 +56,8 @@ export class RoverController extends Controller {
   }
 
   initializeRoutes(): void {
-    this.router.get('/worlds/:worldId/rovers', (req, res) => this.getRovers(req, res))
-    this.router.get('/worlds/:worldId/rovers/:roverId', (req, res) => this.getRoverById(req, res))
-    this.router.post('/worlds/:worldId/rovers', (req, res) => this.createRover(req, res))
+    this.router.get('/api/worlds/:worldId/rovers', (req, res) => this.getRovers(req, res))
+    this.router.get('/api/worlds/:worldId/rovers/:roverId', (req, res) => this.getRoverById(req, res))
+    this.router.post('/api/worlds/:worldId/rovers', (req, res) => this.createRover(req, res))
   }
 }

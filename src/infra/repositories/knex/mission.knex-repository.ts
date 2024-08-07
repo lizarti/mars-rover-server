@@ -1,7 +1,6 @@
 import { Mission } from '../../../domain'
-import { generateUuid } from '../../../utils/uuid.util'
+import { MissionRepository } from '../../../domain/repositories'
 import { MissionEntity } from '../../database'
-import { MissionRepository } from '../mission.repository'
 import { BaseKnexRepository } from './base.knex-repository'
 
 export class MissionKnexRepository

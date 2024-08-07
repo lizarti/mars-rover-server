@@ -1,6 +1,6 @@
-import { WorldRepository } from '../../../infra'
 import { WorldNotFoundException } from '../../exceptions'
 import { World } from '../../models'
+import { WorldRepository } from '../../repositories'
 
 export class GetWorldByIdService {
   private worldRepository: WorldRepository

@@ -1,5 +1,5 @@
-import { RoverRepository } from '../../../infra/repositories'
 import { Rover, World } from '../../models'
+import { RoverRepository } from '../../repositories'
 
 export class AddRoverService {
   constructor(private readonly roverRepository: RoverRepository) {}

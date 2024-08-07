@@ -1,6 +1,6 @@
 import { Rover } from '../../../domain/models'
+import { RoverRepository } from '../../../domain/repositories'
 import { RoverEntity } from '../../database/entities'
-import { RoverRepository } from '../rover.repository'
 import { BaseKnexRepository } from './base.knex-repository'
 
 export class RoverKnexRepository

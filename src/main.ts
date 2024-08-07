@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { MissionController, RoverController, WorldController } from './api'
+import { LoggerMiddleware, MissionController, RoverController, WorldController } from './api'
 import { ExpressServer, MissionKnexRepository, RoverKnexRepository } from './infra'
 import {
   AddRoverUseCase,
@@ -17,6 +17,8 @@ import {
   GetWorldByIdService
 } from './domain'
 import { WorldKnexRepository } from './infra/repositories/knex/world.knex-repository'
+import { HomeController } from './api/controllers/home.controller'
+import { ConsolaLogger } from './infra/logging'
 
 const roverRepository = new RoverKnexRepository('rovers')
 const worldRepository = new WorldKnexRepository('worlds')
@@ -50,5 +52,10 @@ const roverController = new RoverController(
 const windowController = new WorldController(createWorldUseCase)
 const missionController = new MissionController(createMissionUseCase)
 
-const server = new ExpressServer([roverController, windowController, missionController], 3000)
+const homeController = new HomeController()
+
+const consolaLogger = new ConsolaLogger()
+const loggerMiddleware = new LoggerMiddleware(consolaLogger)  
+
+const server = new ExpressServer([roverController, windowController, missionController, homeController], [loggerMiddleware.install()], 3000)
 server.start()

@@ -1,7 +1,7 @@
 import { World } from '../../../domain'
+import { WorldRepository } from '../../../domain/repositories'
 import { generateRandomName } from '../../../utils/random.util'
 import { WorldEntity } from '../../database/entities'
-import { WorldRepository } from '../world.repository'
 import { BaseKnexRepository } from './base.knex-repository'
 
 export class WorldKnexRepository

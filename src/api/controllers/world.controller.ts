@@ -21,6 +21,6 @@ export class WorldController extends Controller {
   }
 
   initializeRoutes(): void {
-    this.router.post('/worlds', (req, res) => this.createWorld(req, res))
+    this.router.post('/api/worlds', (req, res) => this.createWorld(req, res))
   }
 }

@@ -1,7 +1,6 @@
-import { RoverRepository, WorldRepository } from '../../../infra/repositories'
-import { MissionRepository } from '../../../infra/repositories'
 import { RoverNotFoundException } from '../../exceptions'
 import { Rover } from '../../models'
+import { MissionRepository, RoverRepository, WorldRepository } from '../../repositories'
 
 export class GetRoverByIdService {
   constructor(

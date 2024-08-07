@@ -1,5 +1,5 @@
-import { WorldRepository } from '../../../infra'
 import { World } from '../../models'
+import { WorldRepository } from '../../repositories'
 
 export class CreateWorldService {
   constructor(private readonly worldRepository: WorldRepository) {}
