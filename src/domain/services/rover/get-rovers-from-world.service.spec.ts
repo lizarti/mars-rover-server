@@ -1,6 +1,6 @@
 import { GetRoversFromWorldService } from './get-rovers-from-world.service'
-import { RoverRepository } from '../../../infra/repositories'
 import { Rover } from '../../models'
+import { RoverRepository } from '../../repositories'
 
 describe('GetRoversFromWorldService', () => {
   let roverRepository: RoverRepository
