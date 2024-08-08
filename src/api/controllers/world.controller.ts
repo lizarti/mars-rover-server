@@ -16,7 +16,6 @@ export class WorldController extends Controller {
   }
 
   async getWorlds(req: Request, res: Response) {
-    console.log({ timezone: process.env.TZ})
     try {
       const worlds = await this.getWorldsUseCase.execute()
 
