@@ -5,7 +5,7 @@ require('dotenv').config()
  */
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: process.env.DB_CLIENT || 'sqlite3',
     connection: {
       filename: './db.sqlite',
       host: process.env.DB_HOST,
