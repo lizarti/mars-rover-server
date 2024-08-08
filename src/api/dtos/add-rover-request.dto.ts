@@ -2,11 +2,11 @@ import { IsIn, IsNumber, Max, Min } from 'class-validator'
 
 export class AddRoverRequestDto {
   @IsNumber()
-  @Min(1)
+  @Min(0)
   landingPositionX!: number
 
   @IsNumber()
-  @Min(1)
+  @Min(0)
   landingPositionY!: number
 
   @IsNumber()

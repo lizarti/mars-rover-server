@@ -8,6 +8,7 @@ export type WorldSize = {
 export class World implements HasId {
   id: string
   name: string
+  createdAt: Date
   private roversCount: number = 0
 
   private rovers: Rover[] = []

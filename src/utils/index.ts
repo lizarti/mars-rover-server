@@ -1,1 +1,2 @@
-export * from './random.util'
+export * from './planets.utils'
+export * from './uuid.util'

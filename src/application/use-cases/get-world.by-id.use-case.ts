@@ -23,6 +23,6 @@ export class GetWorldByIdUseCase {
       }
       return roverDto
     })
-    return new GetWorldByIdResponseDto(world.id, world.name, getWorldByIdResponseSizeDto, getWorldByIdResponseRoverDtos)
+    return new GetWorldByIdResponseDto(world.id, world.name, world.createdAt.toISOString(), getWorldByIdResponseSizeDto, getWorldByIdResponseRoverDtos)
   }
 }

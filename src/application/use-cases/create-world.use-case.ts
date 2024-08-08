@@ -1,6 +1,6 @@
 import { CreateWorldRequestDto, CreateWorldResponseDto } from '../../api'
 import { CreateWorldService, World } from '../../domain'
-import { generateUuid } from '../../utils/uuid.util'
+import { generateUuid } from '../../utils'
 
 export class CreateWorldUseCase {
   constructor(private readonly createWorldService: CreateWorldService) {}
@@ -19,6 +19,9 @@ export class CreateWorldUseCase {
       height: createWorldRequestDto.height
     })
     world.id = generateUuid()
+    if (createWorldRequestDto.name) {
+      world.name = createWorldRequestDto.name
+    }
     return world
   }
   private mapToResponseDto(world: World): CreateWorldResponseDto {

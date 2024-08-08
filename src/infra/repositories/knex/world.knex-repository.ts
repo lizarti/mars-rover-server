@@ -1,6 +1,6 @@
 import { World } from '../../../domain'
 import { WorldRepository } from '../../../domain/repositories'
-import { generateRandomName } from '../../../utils/random.util'
+import { getRandomPlanetName } from '../../../utils'
 import { WorldEntity } from '../../database/entities'
 import { BaseKnexRepository } from './base.knex-repository'
 
@@ -12,7 +12,7 @@ export class WorldKnexRepository
     const res = await this.getTable()
       .insert({
         id: world.id,
-        name: generateRandomName(),
+        name: world.name || getRandomPlanetName(),
         width: world.size.width,
         height: world.size.height
       })
@@ -31,7 +31,7 @@ export class WorldKnexRepository
   }
 
   async getAll(): Promise<World[]> {
-    const worlds = await this.getTable().leftJoin('rovers', 'worlds.id', 'rovers.world_id').select('worlds.*').count('rovers.id as rovers_count').groupBy('worlds.id') as WorldEntity[]
+    const worlds = await this.getTable().leftJoin('rovers', 'worlds.id', 'rovers.world_id').select('worlds.*').count('rovers.id as rovers_count').orderBy('worlds.created_at', 'desc').groupBy('worlds.id') as WorldEntity[]
 
     return worlds.map(WorldEntity.toDomain)
   }

@@ -1,7 +1,7 @@
 import { AddRoverRequestDto } from '../../api'
 import { AddRoverResponseDto } from '../../api/dtos/add-rover-response.dto'
 import { AddRoverService, GetWorldByIdService, Rover, Vector, World } from '../../domain'
-import { generateUuid } from '../../utils/uuid.util'
+import { generateUuid } from '../../utils'
 
 export class AddRoverUseCase {
   constructor(

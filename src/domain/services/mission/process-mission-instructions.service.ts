@@ -47,7 +47,6 @@ export class ProcessMissionInstructionsService {
     }
 
     if (rover.orientation.x === 1 && x + step > width - 1) {
-      console.log('here')
       return false
     }
 

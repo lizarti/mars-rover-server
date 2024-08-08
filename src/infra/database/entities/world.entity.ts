@@ -3,6 +3,7 @@ import { WithTimestampsEntity } from './with-timestamps.entity'
 
 export class WorldEntity extends WithTimestampsEntity {
   id: string
+  created_at?: string
   name: string
   width: number
   height: number
@@ -15,6 +16,10 @@ export class WorldEntity extends WithTimestampsEntity {
     })
     world.id = worldEntity.id
     world.name = worldEntity.name
+
+    if (worldEntity.created_at) {
+      world.createdAt = new Date(worldEntity.created_at)
+    }
 
     if (worldEntity.rovers_count) {
       world.setRoversCount(worldEntity.rovers_count)

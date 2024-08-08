@@ -12,5 +12,5 @@ export type GetWorldByIdResponseRoverDto = {
 }
 
 export class GetWorldByIdResponseDto {
-  constructor(public readonly id: string, public readonly name: string, public readonly size :GetWorldByIdResponseSizeDto, public readonly rovers: GetWorldByIdResponseRoverDto[]) {}
+  constructor(public readonly id: string, public readonly name: string, public readonly createdAt: string, public readonly size :GetWorldByIdResponseSizeDto, public readonly rovers: GetWorldByIdResponseRoverDto[]) {}
 }

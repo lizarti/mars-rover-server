@@ -1,4 +1,4 @@
-import { generateUuid } from '../../../utils/uuid.util'
+import { generateUuid } from '../../../utils'
 import { Mission, Rover } from '../../models'
 import { MissionRepository, RoverRepository } from '../../repositories'
 import { ProcessMissionInstructionsService } from './process-mission-instructions.service'
